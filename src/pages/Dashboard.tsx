@@ -63,6 +63,7 @@ const Dashboard = () => {
       let totalBorrowed = 0;
       const activities = borrowSnapshot.docs.map((doc) => {
         const record = doc.data();
+        console.log(record); // Debugging line to check data structure
         if (record.status === 'borrowed') {
           totalBorrowed++;
         }
@@ -73,6 +74,7 @@ const Dashboard = () => {
           time: new Date(record.borrowDate.seconds * 1000).toLocaleString(),
         };
       });
+      console.log("Total Borrowed Books: ", totalBorrowed); // Debugging line
       setBooksBorrowed(totalBorrowed);
       setRecentActivity(activities.slice(-5)); // Get the last 5 activities
     };
